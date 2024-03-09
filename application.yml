@@ -1,1 +1,4 @@
-value: value
+registration:
+  role: customer
+  bankCode: SECTBNK
+  accountNumberLength: 5

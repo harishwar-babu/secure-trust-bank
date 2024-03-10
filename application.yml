@@ -2,3 +2,6 @@ registration:
   role: customer
   bankCode: SECTBNK
   accountNumberLength: 5
+message:
+  success: success
+  failure: failure

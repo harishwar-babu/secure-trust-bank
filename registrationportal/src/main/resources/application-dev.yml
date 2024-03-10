@@ -1,0 +1,29 @@
+server:
+  port: ${PORT:0}
+  servlet:
+    context-path: /securebnk/registration
+spring:
+  application:
+    name: registration-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/secure-trust-bank?allowPublicKeyRetrieval=true&&useSSL=false
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092,localhost:9094
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: com.securetrustbank.registration.customserde.CustomSerializer
+    streams:
+      bootstrap-servers: localhost:9092,localhost:9094
+      application-id: "streams"
+  cloud:
+    consul:
+      discovery:
+        instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
+        healthCheckPath: /securebnk/registration/actuator/health

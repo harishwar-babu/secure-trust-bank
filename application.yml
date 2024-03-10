@@ -8,3 +8,6 @@ message:
 role:
   customer: customer
   merchant: merchant
+springdoc:
+  api-docs:
+    path: /apiDocs

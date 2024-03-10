@@ -5,3 +5,6 @@ registration:
 message:
   success: success
   failure: failure
+role:
+  customer: customer
+  merchant: merchant

@@ -4,6 +4,7 @@ import com.securetrustbank.registration.entity.UserRegistrationDetailsEntity;
 import com.securetrustbank.registration.exceptions.NotValidServiceException;
 import com.securetrustbank.registration.exceptions.UserDetailsAlreadyExistsException;
 import com.securetrustbank.registration.service.RegistrationService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RegistrationController {
     private final RegistrationService registrationService;
     @PostMapping("/apply-for-online-banking")
-    public ResponseEntity<BankAccountCreationResponse> applyForOnlineBanking(@RequestParam String type,@RequestBody
+    public ResponseEntity<BankAccountCreationResponse> applyForOnlineBanking(@RequestParam String type,@RequestBody @Valid
     UserRegistrationDetailsEntity userRegistrationDetails) throws NotValidServiceException,UserDetailsAlreadyExistsException {
         return ResponseEntity.status(HttpStatus.CREATED).body(registrationService.applyForBankAccount(type,userRegistrationDetails));
     }

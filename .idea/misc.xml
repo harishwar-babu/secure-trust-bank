@@ -15,7 +15,6 @@
     </option>
     <option name="ignoredFiles">
       <set>
-        <option value="$PROJECT_DIR$/authentication/pom.xml" />
         <option value="$PROJECT_DIR$/manager/pom.xml" />
         <option value="$PROJECT_DIR$/onlinebanking-transaction/pom.xml" />
         <option value="$PROJECT_DIR$/onlinebanking/pom.xml" />

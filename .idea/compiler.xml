@@ -9,10 +9,10 @@
         <outputRelativeToContentRoot value="true" />
         <module name="registrationportal" />
         <module name="bankserver" />
+        <module name="authentication" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="authentication" target="17" />
       <module name="manager" target="17" />
       <module name="onlinebanking" target="17" />
       <module name="onlinebanking-transaction" target="17" />

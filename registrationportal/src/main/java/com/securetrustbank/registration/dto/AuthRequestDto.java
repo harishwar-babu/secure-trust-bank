@@ -7,4 +7,5 @@ public class AuthRequestDto {
     private String emailId;
     private String password;
     private String typeOfService;
+    private String role;
 }

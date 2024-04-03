@@ -7,7 +7,6 @@ message:
   failure: failure
 role:
   customer: customer
-  merchant: merchant
 springdoc:
   api-docs:
     path: /apiDocs

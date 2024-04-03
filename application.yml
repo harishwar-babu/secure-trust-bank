@@ -11,3 +11,7 @@ role:
 springdoc:
   api-docs:
     path: /apiDocs
+transaction:
+  Deposit: D
+  withdraw: W
+  success: success

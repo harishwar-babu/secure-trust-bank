@@ -1,0 +1,3 @@
+com\securetrustbank\authorization\securityconfig\JwtFilter.class
+com\securetrustbank\authorization\securityconfig\ValidateToken.class
+com\securetrustbank\authorization\App.class

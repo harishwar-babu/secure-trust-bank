@@ -34,4 +34,8 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleBadCredentialsException(BadCredentialsException exception){
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("enter a valid credentials");
     }
+    @ExceptionHandler(NoAccessAvailableException.class)
+    public ResponseEntity<String> handleNoAccessAvailableException(NoAccessAvailableException exception){
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(exception.getMessage());
+    }
 }

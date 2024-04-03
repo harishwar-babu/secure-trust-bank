@@ -27,3 +27,6 @@ spring:
       discovery:
         instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
         healthCheckPath: /securebnk/authentication/actuator/health
+Jwt:
+  secret: SecureTrustBankFSKfo+3f6jDrc3fOeJ2vtiLoB+Pn/zNpBv1gSykXb0I0jPVH5uoSt/aBzPtw+eq
+  expirationTime: 15

@@ -2,6 +2,7 @@ package com.securetrustbank.authentication.controller;
 
 import com.securetrustbank.authentication.apidefinitions.AuthenticationControllerApiDefinition;
 import com.securetrustbank.authentication.dto.LoginDetails;
+import com.securetrustbank.authentication.exceptions.NoAccessAvailableException;
 import com.securetrustbank.authentication.exceptions.NotValidServiceException;
 import com.securetrustbank.authentication.service.AuthenticationService;
 import jakarta.validation.Valid;
@@ -20,7 +21,7 @@ public class AuthenticationController implements AuthenticationControllerApiDefi
     private final AuthenticationService authenticationService;
     @PostMapping("/login")
     public ResponseEntity<String> login(@Valid @RequestBody LoginDetails loginDetails, @RequestParam String type)
-            throws NotValidServiceException, AccountNotFoundException {
+            throws NotValidServiceException, AccountNotFoundException, NoAccessAvailableException {
         return ResponseEntity.status(HttpStatus.CREATED).body(authenticationService.authenticate(loginDetails,type));
     }
 }

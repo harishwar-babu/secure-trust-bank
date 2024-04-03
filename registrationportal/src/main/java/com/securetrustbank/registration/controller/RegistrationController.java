@@ -1,6 +1,6 @@
 package com.securetrustbank.registration.controller;
 import com.securetrustbank.registration.dto.BankAccountCreationResponse;
-import com.securetrustbank.registration.entity.UserRegistrationDetailsEntity;
+import com.securetrustbank.registration.entity.AccountDetailsEntity;
 import com.securetrustbank.registration.exceptions.NotValidServiceException;
 import com.securetrustbank.registration.exceptions.UserDetailsAlreadyExistsException;
 import com.securetrustbank.registration.service.RegistrationService;
@@ -18,7 +18,7 @@ public class RegistrationController {
     private final RegistrationService registrationService;
     @PostMapping("/apply-for-online-banking")
     public ResponseEntity<BankAccountCreationResponse> applyForOnlineBanking(@RequestParam String type,@RequestBody @Valid
-    UserRegistrationDetailsEntity userRegistrationDetails) throws NotValidServiceException,UserDetailsAlreadyExistsException {
+    AccountDetailsEntity userRegistrationDetails) throws NotValidServiceException,UserDetailsAlreadyExistsException {
         return ResponseEntity.status(HttpStatus.CREATED).body(registrationService.applyForBankAccount(type,userRegistrationDetails));
     }
 }

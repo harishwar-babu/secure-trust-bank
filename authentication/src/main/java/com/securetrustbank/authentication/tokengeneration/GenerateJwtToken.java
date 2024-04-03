@@ -18,21 +18,17 @@ import java.util.concurrent.TimeUnit;
 public class GenerateJwtToken {
     private JwtConfiguration jwtConfiguration;
     private AuthenticationRepository authenticationRepository;
-    public String generateToken(String userName){
-        AuthenticationEntity authenticationEntity;
-        authenticationEntity = authenticationRepository.findByUserId(userName).orElse(new AuthenticationEntity());
-        if(authenticationEntity.getUserId()==null) {
-            authenticationEntity = authenticationRepository.findByEmail(userName).orElse(new AuthenticationEntity());
+    public String generateToken(String userId,String type){
+        String userRole;
+        userRole = authenticationRepository.findByUserId(userId).orElse(new AuthenticationEntity()).getRole();
+        if(userRole==null) {
+            userRole = authenticationRepository.findByEmail(userId).orElse(new AuthenticationEntity()).getRole();
         }
-        String userId = authenticationEntity.getUserId();
-        String userRole = authenticationEntity.getRole();
-        String typeOfService = authenticationEntity.getBankService()!=null?authenticationEntity.getBankService():
-                authenticationEntity.getCreditCardService();
         Map<String,String> claims = new HashMap<>();
         claims.put("userId",userId);
         claims.put("role",userRole);
-        claims.put("service-type",typeOfService);
-        return createToken(claims,userName);
+        claims.put("service-type",type);
+        return createToken(claims,userId);
     }
 
     private String createToken(Map<String, String> claims, String userName) {

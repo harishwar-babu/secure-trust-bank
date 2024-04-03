@@ -3,7 +3,7 @@ import com.securetrustbank.registration.configurations.MessageConfigurations;
 import com.securetrustbank.registration.configurations.RoleConfigurations;
 import com.securetrustbank.registration.dto.AuthRequestDto;
 import com.securetrustbank.registration.dto.BankAccountCreationResponse;
-import com.securetrustbank.registration.entity.UserRegistrationDetailsEntity;
+import com.securetrustbank.registration.entity.AccountDetailsEntity;
 import com.securetrustbank.registration.exceptions.*;
 import com.securetrustbank.registration.repository.RegistrationRepository;
 import com.securetrustbank.registration.service.RegistrationService;
@@ -24,7 +24,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     private final KafkaTemplate<String, AuthRequestDto> authRequestDtoKafkaTemplate;
 
     @Override
-    public BankAccountCreationResponse applyForBankAccount(String type, UserRegistrationDetailsEntity userRegistrationDetails)
+    public BankAccountCreationResponse applyForBankAccount(String type, AccountDetailsEntity userRegistrationDetails)
             throws UserDetailsAlreadyExistsException, NotValidServiceException {
         if(!type.equals("Online_Banking")){
             throw new NotValidServiceException("invalid type of service");
@@ -58,7 +58,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         if(registrationRepository.existsByUserIdAndTypeOfService(userId,type)){
             throw new CreditCardAlreadyAppliedException("this user has already applied for the credit-card");
         }
-        UserRegistrationDetailsEntity userRegistrationDetails = registrationRepository.findByUserId(userId).
+        AccountDetailsEntity userRegistrationDetails = registrationRepository.findByUserId(userId).
                 orElseThrow(()->new NoDetailsAvailableException("no details available"));
         AuthRequestDto authRequestDto = modelMapper.map(userRegistrationDetails,AuthRequestDto.class);
         authRequestDtoKafkaTemplate.send("user-details-topic",userRegistrationDetails.getUserId(),authRequestDto);

@@ -7,8 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="authorization" />
+        <module name="transaction-service" />
         <module name="registrationportal" />
         <module name="bankserver" />
+        <module name="online-banking" />
         <module name="authentication" />
       </profile>
     </annotationProcessing>
@@ -23,9 +26,11 @@
       <module name="authentication" options="-parameters" />
       <module name="bankserver" options="-parameters" />
       <module name="manager" options="-parameters" />
+      <module name="online-banking" options="-parameters" />
       <module name="onlinebanking" options="-parameters" />
       <module name="onlinebanking-transaction" options="-parameters" />
       <module name="registrationportal" options="-parameters" />
+      <module name="transaction-service" options="-parameters" />
     </option>
   </component>
 </project>

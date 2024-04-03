@@ -1,5 +1,7 @@
 package com.securetrustbank.authentication.serviceimplementation;
 import com.securetrustbank.authentication.dto.LoginDetails;
+import com.securetrustbank.authentication.entity.AuthenticationEntity;
+import com.securetrustbank.authentication.exceptions.NoAccessAvailableException;
 import com.securetrustbank.authentication.exceptions.NotValidServiceException;
 import com.securetrustbank.authentication.repository.AuthenticationRepository;
 import com.securetrustbank.authentication.service.AuthenticationService;
@@ -17,7 +19,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final AuthenticationRepository authenticationRepository;
     @Override
-    public String authenticate(LoginDetails loginDetails, String type) throws NotValidServiceException, AccountNotFoundException {
+    public String authenticate(LoginDetails loginDetails, String type) throws NotValidServiceException, AccountNotFoundException, NoAccessAvailableException {
         if(!type.equals("Online_Banking") && !type.equals("Credit_Card")){
             throw new NotValidServiceException("invalid type of service");
         }
@@ -28,7 +30,16 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if(!authentication.isAuthenticated()){
             throw new AccountNotFoundException("account does not exists");
         }
-        return generateJwtToken.generateToken(userName);
+        String userId;
+        userId = authenticationRepository.findByUserId(userName).orElse(new AuthenticationEntity()).getUserId();
+        if(userId==null) {
+            userId = authenticationRepository.findByEmail(userName).orElse(new AuthenticationEntity()).getUserId();
+        }
+        if((type.equals("Online_Banking") && !authenticationRepository.existsByBankService(userId))||
+                (type.equals("Credit_Card") && !authenticationRepository.existsByCreditCardService(userId))){
+            throw new NoAccessAvailableException("authenticated but access denied!");
+        }
+        return generateJwtToken.generateToken(userId,type);
     }
     //still online-banking-access level authentication and credit-card-access level authentication is pending.
 }

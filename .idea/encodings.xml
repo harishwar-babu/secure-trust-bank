@@ -3,10 +3,14 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/authentication/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/authentication/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/authorization/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/authorization/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bankserver/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bankserver/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/manager/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/manager/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/online-banking/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/online-banking/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/onlinebanking-transaction/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/onlinebanking-transaction/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/onlinebanking/src/main/java" charset="UTF-8" />
@@ -15,5 +19,7 @@
     <file url="file://$PROJECT_DIR$/registrationportal/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/secure-trust-bank-server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/secure-trust-bank-server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/transaction-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/transaction-service/src/main/resources" charset="UTF-8" />
   </component>
 </project>

@@ -12,6 +12,6 @@ springdoc:
   api-docs:
     path: /apiDocs
 transaction:
-  Deposit: D
+  deposit: D
   withdraw: W
   success: success

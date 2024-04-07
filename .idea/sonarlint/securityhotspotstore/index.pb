@@ -29,8 +29,6 @@ sregistrationportal/src/main/java/com/securetrustbank/registration/exceptions/Cr
 mregistrationportal/src/main/java/com/securetrustbank/registration/exceptions/NoDetailsAvailableException.java,c\b\cb738827f2b8539a50c84e15055042ce9359894e
 ’
 bregistrationportal/src/main/java/com/securetrustbank/registration/service/RegistrationService.java,0\c\0c4a13ae68fd792cfec252b0c2a9e8d845f66a26
-˜
-hregistrationportal/src/main/java/com/securetrustbank/registration/exceptions/GlobalExceptionHandler.java,7\4\7419f8d5226c41d99046abb6599dcff6d00d075c
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
@@ -106,8 +104,6 @@ dregistrationportal/src/main/java/com/securetrustbank/registration/RegistrationP
 eregistrationportal/src/main/java/com/securetrustbank/registration/customserde/CustomDeserializer.java,0\0\006e7076fe0b33c5945b8a17bb96f79ab226c5d6
 “
 cregistrationportal/src/main/java/com/securetrustbank/registration/customserde/CustomSerializer.java,8\6\86732c1e50819ced528f1097e58b25b55d01bb3e
-˜
-hregistrationportal/src/main/java/com/securetrustbank/registration/controller/RegistrationController.java,3\4\3401b69a72212f5d91ab8fc34b6aee8fdc14593c
 Ž
 ^authentication/src/main/java/com/securetrustbank/authentication/AuthenticationApplication.java,b\d\bd1b14e3ce49d7b4ea9bf376197134c81d4ab255
 F

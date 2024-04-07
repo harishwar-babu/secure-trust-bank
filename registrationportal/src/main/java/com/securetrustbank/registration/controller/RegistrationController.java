@@ -1,4 +1,5 @@
 package com.securetrustbank.registration.controller;
+import com.securetrustbank.registration.apidefinitions.RegistrationApiDefinition;
 import com.securetrustbank.registration.dto.BankAccountCreationResponse;
 import com.securetrustbank.registration.entity.AccountDetailsEntity;
 import com.securetrustbank.registration.exceptions.NotValidServiceException;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 @RestController
 @AllArgsConstructor
-public class RegistrationController {
+public class RegistrationController implements RegistrationApiDefinition {
     private final RegistrationService registrationService;
     @PostMapping("/apply")
     public ResponseEntity<BankAccountCreationResponse> applyForOnlineBanking(@RequestParam String type,@RequestBody @Valid

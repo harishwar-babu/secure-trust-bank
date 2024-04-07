@@ -27,8 +27,6 @@ sregistrationportal/src/main/java/com/securetrustbank/registration/exceptions/Us
 sregistrationportal/src/main/java/com/securetrustbank/registration/exceptions/CreditCardAlreadyAppliedException.java,d\4\d426b10085a9702babac608a7929b78ace7dfbad
 ù
 mregistrationportal/src/main/java/com/securetrustbank/registration/exceptions/NoDetailsAvailableException.java,c\b\cb738827f2b8539a50c84e15055042ce9359894e
-ò
-hregistrationportal/src/main/java/com/securetrustbank/registration/exceptions/GlobalExceptionHandler.java,7\4\7419f8d5226c41d99046abb6599dcff6d00d075c
 í
 bregistrationportal/src/main/java/com/securetrustbank/registration/service/RegistrationService.java,0\c\0c4a13ae68fd792cfec252b0c2a9e8d845f66a26
 :
@@ -106,8 +104,6 @@ cregistrationportal/src/main/java/com/securetrustbank/registration/customserde/C
 dregistrationportal/src/main/java/com/securetrustbank/registration/RegistrationPortalApplication.java,c\d\cdd735226e01242f4e8057dc27a123c7aa154331
 â
 Ybankserver/src/main/java/com/securetrustbank/server/SecureTrustBankServerApplication.java,7\2\72a67cb0246a7d0da4dd07614e3cdd484af7ed6a
-ò
-hregistrationportal/src/main/java/com/securetrustbank/registration/controller/RegistrationController.java,3\4\3401b69a72212f5d91ab8fc34b6aee8fdc14593c
 é
 ^authentication/src/main/java/com/securetrustbank/authentication/AuthenticationApplication.java,b\d\bd1b14e3ce49d7b4ea9bf376197134c81d4ab255
 F

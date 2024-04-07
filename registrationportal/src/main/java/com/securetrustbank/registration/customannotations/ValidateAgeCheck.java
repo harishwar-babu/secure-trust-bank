@@ -12,7 +12,7 @@ public class ValidateAgeCheck implements ConstraintValidator<AgeValidator, Local
     @Override
     public boolean isValid(LocalDate value, ConstraintValidatorContext context) {
         if(value!=null){
-            return Period.between(value,LocalDate.now()).getYears()>=18;
+            return Period.between(value,LocalDate.now()).getYears()>18;
         }
         return false;
     }

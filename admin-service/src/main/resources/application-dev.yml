@@ -1,0 +1,44 @@
+server:
+  port: ${PORT:0}
+  servlet:
+    context-path: /securebnk/admin
+spring:
+  application:
+    name: admin-service
+  cloud:
+    consul:
+      discovery:
+        instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
+        healthCheckPath: /securebnk/admin/actuator/health
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+resilience4j:
+  circuitbreaker:
+    instances:
+      user-service:
+        registerHealthIndicator: true
+        failureRateThreshold: 50
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+        sliding-window-size: 5
+        sliding-window-type: count-based
+        ignoreExceptions:
+          - com.securetrustbank.admin.exceptions.UserNotFoundException
+      transaction-service:
+        registerHealthIndicator: true
+        failureRateThreshold: 50
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+        sliding-window-size: 5
+        sliding-window-type: count-based

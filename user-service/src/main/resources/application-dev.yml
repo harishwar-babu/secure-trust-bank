@@ -1,0 +1,62 @@
+server:
+  port: ${PORT:0}
+  servlet:
+    context-path: /securebnk/user
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/secure-trust-bank?allowPublicKeyRetrieval=true&&useSSL=false
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092,localhost:9094
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: com.securetrustbank.user.customserde.CustomSerializer
+  cloud:
+    consul:
+      discovery:
+        instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
+        healthCheckPath: /securebnk/user/actuator/health
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+resilience4j:
+  circuitbreaker:
+    instances:
+      online-banking:
+        registerHealthIndicator: true
+        failureRateThreshold: 50
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+        sliding-window-size: 5
+        sliding-window-type: count-based
+        ignoreExceptions:
+          - com.securetrustbank.user.exceptions.AccountNumberNotFoundException
+          - com.securetrustbank.user.exceptions.GreaterThanCurrentBalanceException
+          - com.securetrustbank.user.exceptions.NegativeAmountException
+      transaction-service:
+        registerHealthIndicator: true
+        failureRateThreshold: 50
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+        sliding-window-size: 5
+        sliding-window-type: count-based

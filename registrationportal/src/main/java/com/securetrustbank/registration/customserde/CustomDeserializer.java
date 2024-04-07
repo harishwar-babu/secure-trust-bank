@@ -5,11 +5,12 @@ import com.securetrustbank.registration.dto.AuthRequestDto;
 import com.securetrustbank.registration.exceptions.DeserializationException;
 import org.apache.kafka.common.header.Headers;
 import org.apache.kafka.common.serialization.Deserializer;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Map;
-
+@Component
 public class CustomDeserializer implements Deserializer<AuthRequestDto> {
     private final ObjectMapper objectMapper = new ObjectMapper();
     @Override

@@ -6,9 +6,10 @@ import com.securetrustbank.registration.dto.AuthRequestDto;
 import com.securetrustbank.registration.exceptions.SerializationException;
 import org.apache.kafka.common.header.Headers;
 import org.apache.kafka.common.serialization.Serializer;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
-
+@Component
 public class CustomSerializer implements Serializer<AuthRequestDto> {
     private final ObjectMapper objectMapper = new ObjectMapper();
     @Override

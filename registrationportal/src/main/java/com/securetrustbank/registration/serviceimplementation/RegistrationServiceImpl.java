@@ -40,9 +40,11 @@ public class RegistrationServiceImpl implements RegistrationService {
         userRegistrationDetails.setUserId(userRegistrationDetails.getLastName().substring(0,3)+
                 userRegistrationDetails.getPanNumber().substring(8,10));
         userRegistrationDetails.setCreatedDate(LocalDateTime.now());
+        userRegistrationDetails.setTypeOfService(type);
         userRegistrationDetails.setRole(roleConfigurations.getCustomer());
         registrationRepository.save(userRegistrationDetails);
         AuthRequestDto authRequestDto = modelMapper.map(userRegistrationDetails,AuthRequestDto.class);
+        authRequestDto.setEmailId(userRegistrationDetails.getEmail());
         BankAccountCreationResponse bankAccountCreationResponse = modelMapper.map(userRegistrationDetails,
                 BankAccountCreationResponse.class);
         bankAccountCreationResponse.setStatus(messageConfigurations.getSuccess());

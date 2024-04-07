@@ -7,10 +7,8 @@ import java.util.Optional;
 
 public interface AuthenticationRepository extends JpaRepository<AuthenticationEntity,String> {
     boolean existsByUserId(String userId);
-    //check if the user has the bank account to login
-    boolean existsByBankService(String userId);
     //check if the user has the credit card to login
     boolean existsByCreditCardService(String userId);
-    Optional<AuthenticationEntity> findByEmail(String email);
+    Optional<AuthenticationEntity> findByEmailId(String email);
     Optional<AuthenticationEntity> findByUserId(String userId);
 }

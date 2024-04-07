@@ -22,11 +22,7 @@ public class WithDrawServiceImpl implements TransactionService {
     private ModelMapper modelMapper;
     private KafkaTemplate<String, TransactionResponse> transactionResponseKafkaTemplate;
     @Override
-    public TransactionResponse doTransaction(String type, String userId, AmountDetails amountDetails) throws
-            NotValidTransactionException, AccountNumberNotFoundException, NegativeAmountException, GreaterThanCurrentBalanceException {
-        if(!type.equalsIgnoreCase("withdraw")){
-            throw new NotValidTransactionException("required is Withdraw But given:"+type);
-        }
+    public TransactionResponse doTransaction(String userId, AmountDetails amountDetails) throws AccountNumberNotFoundException, NegativeAmountException, GreaterThanCurrentBalanceException {
         if(!transactionRepository.existsByUserId(userId)){
             throw new AccountNumberNotFoundException("account does not exists");
         }

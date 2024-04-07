@@ -1,4 +1,5 @@
 package com.securetrustbank.registration.entity;
+import com.securetrustbank.registration.customannotations.AgeValidator;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -36,6 +37,7 @@ public class AccountDetailsEntity {
     private String mobileNumber;
     @Email(regexp = "[a-z0-9_.e+%#]+@[a-z]+.[a-z]{2,3}",flags = Pattern.Flag.CASE_INSENSITIVE,message = "enter a valid email")
     private String email;
+    @AgeValidator(message = "your age must be atLeast 18 years of age")
     private LocalDate datOfBirth;
     private String typeOfService; //(online-banking,credit-card -->(details will be fetched automatically when the user apply credit card))
     @NotBlank(message = "password is required")

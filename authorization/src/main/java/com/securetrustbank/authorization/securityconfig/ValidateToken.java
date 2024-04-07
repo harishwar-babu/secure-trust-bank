@@ -32,7 +32,7 @@ public class ValidateToken {
     }
 
     private Key getSignKey() {
-        String jwtSecret = " SecureTrustBankFSKfo+3f6jDrc3fOeJ2vtiLoB+Pn/zNpBv1gSykXb0I0jPVH5uoSt/aBzPtw+eq";
+        String jwtSecret = "SecureTrustBankFSKfo+3f6jDrc3fOeJ2vtiLoB+Pn/zNpBv1gSykXb0I0jPVH5uoSt/aBzPtw+eq";
         byte[] keys = Decoders.BASE64.decode(jwtSecret);
         return Keys.hmacShaKeyFor(keys);
     }

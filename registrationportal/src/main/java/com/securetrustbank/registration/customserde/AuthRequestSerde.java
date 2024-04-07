@@ -1,16 +1,17 @@
 package com.securetrustbank.registration.customserde;
 import com.securetrustbank.registration.dto.AuthRequestDto;
-import lombok.AllArgsConstructor;
 import org.apache.kafka.common.serialization.Deserializer;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serializer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.Map;
 @Component
-@AllArgsConstructor
 public class AuthRequestSerde implements Serde<AuthRequestDto> {
-    private final CustomSerializer customSerializer;
-    private final CustomDeserializer customDeserializer;
+    @Autowired
+    private CustomSerializer customSerializer;
+    @Autowired
+    private CustomDeserializer customDeserializer;
 
     @Override
     public void configure(Map<String, ?> configs, boolean isKey) {

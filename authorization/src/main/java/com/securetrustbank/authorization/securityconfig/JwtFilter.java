@@ -31,6 +31,11 @@ public class JwtFilter extends OncePerRequestFilter {
     private HandlerExceptionResolver handlerExceptionResolver;
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        String requestUri = request.getRequestURI();
+        if(requestUri.contains("/apiDocs") || requestUri.contains("actuator/health") ||
+                requestUri.contains("swagger-ui/index.html")) {
+            return;
+        }
         String authHead = request.getHeader("Authorization");
         String token=null;
         String userName=null;

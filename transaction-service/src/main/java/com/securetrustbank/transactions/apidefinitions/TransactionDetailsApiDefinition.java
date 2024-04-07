@@ -5,6 +5,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import java.util.List;
 @Tag(name = "online-banking-Transaction",description = "Online Banking Transaction Details Functionality")
 public interface TransactionDetailsApiDefinition {
@@ -20,4 +22,10 @@ public interface TransactionDetailsApiDefinition {
             @ApiResponse(responseCode = "401",description = "authorization exceptions")
     })
     ResponseEntity<List<TransactionDetailsResponse>> getAllAccountTransactions();
+    @Operation(summary = "Transaction Details For an Account")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",description = "displays a list of transactions for all account"),
+            @ApiResponse(responseCode = "401",description = "authorization exceptions")
+    })
+    ResponseEntity<List<TransactionDetailsResponse>> getAllCustomerTransactions(@PathVariable String userId);
 }

@@ -22,12 +22,13 @@ public class GenerateJwtToken {
         String userRole;
         userRole = authenticationRepository.findByUserId(userId).orElse(new AuthenticationEntity()).getRole();
         if(userRole==null) {
-            userRole = authenticationRepository.findByEmail(userId).orElse(new AuthenticationEntity()).getRole();
+            userRole = authenticationRepository.findByEmailId(userId).orElse(new AuthenticationEntity()).getRole();
         }
         Map<String,String> claims = new HashMap<>();
         claims.put("userId",userId);
         claims.put("role",userRole);
         claims.put("service-type",type);
+        System.out.println(claims);
         return createToken(claims,userId);
     }
 

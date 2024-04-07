@@ -23,7 +23,7 @@ public class SecurityConfiguration {
     }
     @Bean
     public UserDetailsAuthentication userDetailsAuthentication(){
-        return userDetailsAuthentication();
+        return new UserDetailsAuthentication();
     }
     @Bean
     public SecurityFilterChain authorize(HttpSecurity httpSecurity) throws Exception {

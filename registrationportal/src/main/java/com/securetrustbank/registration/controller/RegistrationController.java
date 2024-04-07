@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class RegistrationController {
     private final RegistrationService registrationService;
-    @PostMapping("/apply-for-online-banking")
+    @PostMapping("/apply")
     public ResponseEntity<BankAccountCreationResponse> applyForOnlineBanking(@RequestParam String type,@RequestBody @Valid
     AccountDetailsEntity userRegistrationDetails) throws NotValidServiceException,UserDetailsAlreadyExistsException {
         return ResponseEntity.status(HttpStatus.CREATED).body(registrationService.applyForBankAccount(type,userRegistrationDetails));

@@ -21,10 +21,6 @@ public class GlobalExceptionHandler {
                 validationErrors.put(error.getField(),error.getDefaultMessage()));
         return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(validationErrors);
     }
-    @ExceptionHandler(NotValidTransactionException.class)
-    public ResponseEntity<String> handleNotValidTransactionException(NotValidTransactionException exception){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
-    }
     @ExceptionHandler(AccountNumberNotFoundException.class)
     public ResponseEntity<String> handleAccountNotFoundException(AccountNumberNotFoundException exception){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());

@@ -1,0 +1,33 @@
+server:
+  port: 9097
+spring:
+  application:
+    name: bank-gateway
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: registration-service
+            uri: lb://registration-service
+            predicates:
+              - Path=/securebnk/registration/**
+          - id: authentication-service
+            uri: lb://authentication-service
+            predicates:
+              - Path=/securebnk/authentication/**
+          - id: online-banking-service
+            uri: lb://online-banking-service
+            predicates:
+              - Path=/securebnk/online-banking/**
+          - id: transaction-service
+            uri: lb://transaction-service
+            predicates:
+              - Path=/securebnk/transactions/**
+          - id: user-service
+            uri: lb://user-service
+            predicates:
+              - Path=/securebnk/user/**
+          - id: admin-service
+            uri: lb://admin-service
+            predicates:
+              - Path=/securebnk/admin/**

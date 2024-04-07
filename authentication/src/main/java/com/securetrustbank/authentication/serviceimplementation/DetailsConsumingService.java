@@ -31,6 +31,7 @@ public class DetailsConsumingService {
         if(authRequestDto!=null){
             AuthenticationEntity authenticationEntity = modelMapper.map(authRequestDto,AuthenticationEntity.class);
             authenticationEntity.setBankService(authRequestDto.getTypeOfService());
+            authenticationEntity.setEmailId(authRequestDto.getEmailId());
             if(!authenticationRepository.existsByUserId(authenticationEntity.getUserId())){
                 authenticationRepository.save(authenticationEntity);
             }

@@ -2,6 +2,7 @@ package com.securetrustbank.onlinebank.customserde;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.securetrustbank.onlinebank.dto.TransactionResponse;
 import com.securetrustbank.onlinebank.exceptions.SerializationException;
 import org.apache.kafka.common.header.Headers;
 import org.apache.kafka.common.serialization.Serializer;

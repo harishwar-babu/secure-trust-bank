@@ -9,6 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 @RestController
@@ -28,5 +29,9 @@ public class TransactionDetailsController implements TransactionDetailsApiDefini
     public ResponseEntity<List<TransactionDetailsResponse>> getAllAccountTransactions(){
         return ResponseEntity.ok(transactionDetailsService.getAllAccountTransactions());
     }
-
+    @GetMapping("/userTransaction")
+    @PreAuthorize("hasAuthority('manager')")
+    public ResponseEntity<List<TransactionDetailsResponse>> getAllCustomerTransactions(@PathVariable String userId){
+        return ResponseEntity.ok(transactionDetailsService.getAllTransactions(userId));
+    }
 }

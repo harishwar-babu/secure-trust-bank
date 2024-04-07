@@ -5,6 +5,7 @@ import com.securetrustbank.onlinebank.dto.AmountDetails;
 import com.securetrustbank.onlinebank.dto.TransactionResponse;
 import com.securetrustbank.onlinebank.entity.AccountDetailsEntity;
 import com.securetrustbank.onlinebank.exceptions.AccountNumberNotFoundException;
+import com.securetrustbank.onlinebank.exceptions.GreaterThanCurrentBalanceException;
 import com.securetrustbank.onlinebank.exceptions.NegativeAmountException;
 import com.securetrustbank.onlinebank.exceptions.NotValidTransactionException;
 import com.securetrustbank.onlinebank.repository.TransactionRepository;
@@ -23,11 +24,8 @@ public class DepositServiceImpl implements TransactionService {
     private ModelMapper modelMapper;
     private KafkaTemplate<String,TransactionResponse> transactionResponseKafkaTemplate;
     @Override
-    public TransactionResponse doTransaction(String type, String userId, AmountDetails amountDetails) throws
-            NotValidTransactionException, AccountNumberNotFoundException, NegativeAmountException {
-        if(!type.equalsIgnoreCase("deposit")){
-            throw new NotValidTransactionException("required is Deposit But given:"+type);
-        }
+    public TransactionResponse doTransaction(String userId, AmountDetails amountDetails) throws AccountNumberNotFoundException,
+            NegativeAmountException {
         if(!transactionRepository.existsByUserId(userId)){
             throw new AccountNumberNotFoundException("account does not exists");
         }
